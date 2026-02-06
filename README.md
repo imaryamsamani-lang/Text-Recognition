@@ -39,7 +39,10 @@ Irregular text layouts
 ├── Dataset/
 │   ├── images/           
 │   ├── labels/            
-├── weights/               
+├── weights/
+├── CV_DBNet.ipynb
+├── test.py
+├── inference.py        
 └── README.md
 ```
 
