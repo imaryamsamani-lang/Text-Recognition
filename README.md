@@ -1,126 +1,182 @@
 ## Handwritten Text Detection with DBNet
 
-This repository contains a fine-tuned version of DBNet (Differentiable Binarization Network) for handwritten text detection.
-The model is based on the original implementation and trained on custom handwritten text data.
+A fine-tuned implementation of DBNet (Differentiable Binarization Network) optimized for detecting handwritten text in scanned documents, notes, and forms. This model addresses challenges specific to handwriting including curvature, irregular layouts, and varied writing styles.
 
 🔗 Original DBNet repository:
 [DBNet](https://github.com/WenmuZhou/DBNet.pytorch)
 
-## ✨ Features
+## Overview
+Optical text detection in handwritten documents presents unique challenges compared to printed text, including inconsistent baselines, character connectivity variations, and diverse writing styles. This implementation adapts the DBNet architecture—originally designed for scene text detection—to specialize in handwritten content through targeted fine-tuning on custom datasets. The model builds upon the original DBNet framework, with modifications to training protocols and data augmentation strategies optimized for handwritten text characteristics.
 
-Fine-tuned DBNet for handwritten text detection
+## Key Features
 
-Supports curved, irregular, and dense handwriting
+Handwriting-optimized detection – Fine-tuned specifically for handwritten text across diverse writing styles
 
-Robust to rotation
+Curved text support – Detects irregular text baselines common in natural handwriting
 
-Polygon-based text detection
+Rotation robustness – Handles document rotations and skewed scanning
 
-Fast inference suitable for real-world applications
+Polygon-based detection – Generates precise polygonal bounding regions around text instances
 
-Compatible with custom datasets and annotations
+Dense text capability – Effectively separates adjacent handwritten lines and words
 
-## 🧠 Model Overview
+Practical inference speed – Suitable for batch processing of scanned documents
 
-DBNet formulates text detection as a segmentation task and introduces a differentiable binarization module that allows the network to learn optimal thresholds automatically.
+## Technical Approach
 
-This fine-tuned version improves performance on:
+DBNet formulates text detection as a segmentation problem with a differentiable binarization module. This approach allows the network to learn adaptive thresholds during training, enabling precise text region segmentation without post-processing parameter tuning.
 
-Handwritten documents
+The fine-tuned version enhances performance on handwritten documents through:
 
-Notes, forms, and scanned pages
+Specialized data augmentation mimicking handwriting variations
 
-Irregular text layouts
+Modified loss weighting for better handling of curved text regions
 
-## 📂 Repository Structure
+Optimized backbone feature extraction for handwriting patterns
+
+## Installation
+
+### Repository Structure
 ```bash
-├── utils/                 
-├── net/                   
-├── Dataset/
-│   ├── images/           
-│   ├── labels/            
-├── weights/
-├── CV_DBNet.ipynb
-├── test.py
-├── inference.py        
-└── README.md
+├── net/                      # Neural network architecture implementations
+├── utils/                    # Utility functions and helpers
+├── Dataset/                  # Data loading and processing
+│   ├── images/              # Training and validation images
+│   └── labels/              # Corresponding annotation files
+├── weights/                  # Model checkpoints
+├── CV_DBNet.ipynb           # Complete training workflow notebook
+├── inference.py             # Single image inference script
+├── test.py                  # Model evaluation on test sets
+└── requirements.txt         # Python dependencies
 ```
 
-## 📦 Installation
+### Prerequisites
 
-1️⃣ Clone the repository
+Python 3.8+
+
+CUDA-compatible GPU (recommended for training)
+
+PyTorch (≥1.8.0)
+
+### Environmental Setup
 
 ```bash
+# Clone repository
 git clone https://github.com/imaryamsamani-lang/Text-Recognition.git
-cd handwritten-dbnet
-```
+cd Text-Recognition
 
-2️⃣ Create environment & install dependencies
-
-```bash
+# Create and activate conda environment
 conda create -n dbnet python=3.8 -y
 conda activate dbnet
+
+# Install dependencies
 pip install -r requirements.txt
 ```
 
-⚠️ Make sure you have PyTorch installed with CUDA support if using a GPU.
+### PyTorch Installation
+Install the appropriate PyTorch version for your system:
 
-## 📊 Dataset Format
+```bash
+# Example for CUDA 11.3
+pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 --extra-index-url https://download.pytorch.org/whl/cu113
+```
 
-The model is trained using polygon-level annotations.
+## Data Preparation
 
-Each image has a corresponding annotation file containing text polygons:
+### Annotation Format
+The model expects polygon-level annotations for text regions. Each image should have a corresponding JSON file with the following structure:
 
-```text
+```json
 {
   "polygons": [
     [[x1, y1], [x2, y2], [x3, y3], [x4, y4]],
-    ...
+    [[x5, y5], [x6, y6], [x7, y7], [x8, y8]]
   ]
 }
 ```
 
-Supported:
+### Dataset Organization
 
-Multiple text instances per image
+```text
+Dataset/
+├── train/
+│   ├── images/     # Training images (.jpg, .png)
+│   └── labels/     # Corresponding JSON annotations
+├── val/
+│   ├── images/     # Validation images
+│   └── labels/     # Validation annotations
+└── test/
+    ├── images/     # Test images
+    └── labels/     # Test annotations
+```
 
-Arbitrary polygon shapes
+## Model Weights
+Download the pre-trained weights fine-tuned for handwritten text detection: [db_best.pt](https://drive.google.com/file/d/1GWDVhdM54axJXbb-Buommhr3FlpDecPL/view?usp=sharing)
 
-Curved handwriting
+Place the downloaded weights file in the weights/ directory.
 
-## 🚀 Training
+## Usage
 
-Follow the steps in CV_DBNet.ipynb
+### Inference
 
-Key training options:
+Process individual images for text detection:
 
-Backbone: ResNet-18 / ResNet-50
+```bash
+python inference.py --image path/to/image.jpg --weights weights/db_best.pt
+```
 
-Image size: configurable
+Optional arguments:
 
-Optimizer: Adam
+--output_dir: Directory to save visualization results
 
-Loss: DB Loss (probability + threshold maps)
+--threshold: Confidence threshold for detection (default: 0.3)
 
-## 📈 Evaluation
+--visualize: Generate visualization overlay
 
-Run test.py to evalute the model on the test set.
+### Evaluation
 
-Metrics:
+Evaluate model performance on a test set:
 
-Precision: 0.99
+```bash
+python test.py --test_dir Dataset/test --weights weights/db_best.pt
+```
 
-Recall: 0.73
+The evaluation script computes precision, recall, and F-score metrics.
 
-F-score: 0.84
+### Training
 
-## 🖼️ Inference
+For custom fine-tuning, use the comprehensive training notebook:
 
-Download the weights at: [db_best.pt](https://drive.google.com/file/d/1GWDVhdM54axJXbb-Buommhr3FlpDecPL/view?usp=sharing)
+```bash
+jupyter notebook CV_DBNet.ipynb
+```
 
-Run inference.py for a single demo.
+Key training configurations:
 
-🔍 Example Results
+Backbone: ResNet-18 or ResNet-50
+
+Input size: Adjustable based on document resolution
+
+Optimizer: Adam with cosine annealing schedule
+
+Batch size: Configurable based on GPU memory
+
+Loss: Combined probability map and threshold map losses
+
+## Performance
+The fine-tuned model achieves the following performance on handwritten text detection:
+
+| Metric | Score |
+|--------|-------|
+| Precision | 0.99 |
+| Recall | 0.73 |
+| F-score | 0.84 |
+
+Note: Performance may vary based on handwriting style, image quality, and document complexity.
+
+## Results Visualization
+
+Example detections demonstrating model capability on diverse handwritten content:
 
 ![Diagram](results/1.png)
 ![Diagram](results/2.png)
