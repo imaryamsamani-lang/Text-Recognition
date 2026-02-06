@@ -104,6 +104,8 @@ Loss: DB Loss (probability + threshold maps)
 
 ## 📈 Evaluation
 
+Run test.py to evalute the model on the test set.
+
 Metrics:
 
 Precision: 0.99
@@ -116,11 +118,9 @@ F-score: 0.84
 
 Download the weights at: https://drive.google.com/file/d/1GWDVhdM54axJXbb-Buommhr3FlpDecPL/view?usp=sharing
 
-Run detection on a single image or a folder:
+Run inference.py for a single demo.
 
 🔍 Example Results
-Input	Output
-Handwritten page	Detected text regions
 
 ![Diagram](results/1.png)
 ![Diagram](results/2.png)
