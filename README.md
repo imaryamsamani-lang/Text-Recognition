@@ -47,7 +47,7 @@ Irregular text layouts
 1️⃣ Clone the repository
 
 ```bash
-git clone https://github.com/your-username/handwritten-dbnet.git
+git clone [https://github.com/your-username/handwritten-dbnet.git](https://github.com/imaryamsamani-lang/Text-Recognition.git)
 cd handwritten-dbnet
 ```
 
@@ -111,6 +111,8 @@ F-score: 0.84
 IoU
 
 🖼️ Inference
+
+Download the weights at: https://drive.google.com/file/d/1GWDVhdM54axJXbb-Buommhr3FlpDecPL/view?usp=sharing
 
 Run detection on a single image or a folder:
 
