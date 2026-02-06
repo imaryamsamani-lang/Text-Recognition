@@ -4,7 +4,7 @@ This repository contains a fine-tuned version of DBNet (Differentiable Binarizat
 The model is based on the original implementation and trained on custom handwritten text data.
 
 🔗 Original DBNet repository:
-[https://github.com/WenmuZhou/DBNet.pytorch](https://github.com/WenmuZhou/DBNet.pytorch)
+[DBNet](https://github.com/WenmuZhou/DBNet.pytorch)
 
 ## ✨ Features
 
@@ -116,7 +116,7 @@ F-score: 0.84
 
 ## 🖼️ Inference
 
-Download the weights at: https://drive.google.com/file/d/1GWDVhdM54axJXbb-Buommhr3FlpDecPL/view?usp=sharing
+Download the weights at: [db_best.pt](https://drive.google.com/file/d/1GWDVhdM54axJXbb-Buommhr3FlpDecPL/view?usp=sharing)
 
 Run inference.py for a single demo.
 
