@@ -1,4 +1,4 @@
-Handwritten Text Detection with DBNet
+## Handwritten Text Detection with DBNet
 
 This repository contains a fine-tuned version of DBNet (Differentiable Binarization Network) for handwritten text detection.
 The model is based on the original implementation and trained on custom handwritten text data.
@@ -6,7 +6,7 @@ The model is based on the original implementation and trained on custom handwrit
 🔗 Original DBNet repository:
 [https://github.com/WenmuZhou/DBNet.pytorch](https://github.com/WenmuZhou/DBNet.pytorch)
 
-✨ Features
+## ✨ Features
 
 Fine-tuned DBNet for handwritten text detection
 
@@ -20,7 +20,7 @@ Fast inference suitable for real-world applications
 
 Compatible with custom datasets and annotations
 
-🧠 Model Overview
+## 🧠 Model Overview
 
 DBNet formulates text detection as a segmentation task and introduces a differentiable binarization module that allows the network to learn optimal thresholds automatically.
 
@@ -32,7 +32,7 @@ Notes, forms, and scanned pages
 
 Irregular text layouts
 
-📂 Repository Structure
+## 📂 Repository Structure
 ```bash
 ├── utils/                 
 ├── net/                   
@@ -43,11 +43,12 @@ Irregular text layouts
 └── README.md
 ```
 
-📦 Installation
+## 📦 Installation
+
 1️⃣ Clone the repository
 
 ```bash
-git clone [https://github.com/your-username/handwritten-dbnet.git](https://github.com/imaryamsamani-lang/Text-Recognition.git)
+git clone https://github.com/imaryamsamani-lang/Text-Recognition.git
 cd handwritten-dbnet
 ```
 
@@ -61,7 +62,7 @@ pip install -r requirements.txt
 
 ⚠️ Make sure you have PyTorch installed with CUDA support if using a GPU.
 
-📊 Dataset Format
+## 📊 Dataset Format
 
 The model is trained using polygon-level annotations.
 
@@ -84,7 +85,7 @@ Arbitrary polygon shapes
 
 Curved handwriting
 
-🚀 Training
+## 🚀 Training
 
 Follow the steps in CV_DBNet.ipynb
 
@@ -98,7 +99,7 @@ Optimizer: Adam
 
 Loss: DB Loss (probability + threshold maps)
 
-📈 Evaluation
+## 📈 Evaluation
 
 Metrics:
 
@@ -108,9 +109,7 @@ Recall: 0.73
 
 F-score: 0.84
 
-IoU
-
-🖼️ Inference
+## 🖼️ Inference
 
 Download the weights at: https://drive.google.com/file/d/1GWDVhdM54axJXbb-Buommhr3FlpDecPL/view?usp=sharing
 
@@ -124,16 +123,3 @@ Handwritten page	Detected text regions
 ![Diagram](results/2.png)
 ![Diagram](results/3.png)
 ![Diagram](results/4.png)
-
-🧪 Fine-Tuning Notes
-
-To adapt DBNet for handwriting:
-
-Lowered binarization threshold sensitivity
-
-Augmented training with rotation, blur, and noise
-
-Tuned shrink ratio for thin strokes
-
-
-Open-source OCR research community
