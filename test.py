@@ -54,11 +54,11 @@ def demo(filenames, model=None):
             cv2.polylines(image, [box], isClosed=True, color=(0, 255, 0), thickness=5)
 
         cv2_imshow(image)
-        #cv2.imwrite("/content/DBNet/"+filename.split('/')[-1], image) #f'./data/{os.path.basename(filename)}', image)
+        #cv2.imwrite("/content/DBNet/"+filename.split('/')[-1], image)
 
 filenames = []
-with open('Dataset/test_aug.txt') as f:
+with open('Dataset/test.txt') as f:
   for filename in f.readlines():
     filename = filename.rstrip()
-    filenames.append('Dataset/images_aug/' + filename)
+    filenames.append('Dataset/test/images/' + filename)
 demo(filenames)
