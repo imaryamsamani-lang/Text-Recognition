@@ -109,7 +109,7 @@ Place the downloaded weights file in the weights/ directory.
 Process individual images for text detection:
 
 ```bash
-python inference.py --image path/to/image.jpg --weights weights/db_best.pt
+python inference.py
 ```
 
 Optional arguments:
@@ -125,7 +125,7 @@ Optional arguments:
 Evaluate model performance on a test set:
 
 ```bash
-python test.py --test_dir Dataset/test --weights weights/db_best.pt
+python test.py
 ```
 
 The evaluation script computes precision, recall, and F-score metrics.
