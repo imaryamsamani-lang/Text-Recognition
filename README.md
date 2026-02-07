@@ -6,7 +6,9 @@ A fine-tuned implementation of DBNet (Differentiable Binarization Network) optim
 [DBNet](https://github.com/WenmuZhou/DBNet.pytorch)
 
 ## Overview
-Optical text detection in handwritten documents presents unique challenges compared to printed text, including inconsistent baselines, character connectivity variations, and diverse writing styles. This implementation adapts the DBNet architecture—originally designed for scene text detection—to specialize in handwritten content through targeted fine-tuning on custom datasets. The model builds upon the original DBNet framework, with modifications to training protocols and data augmentation strategies optimized for handwritten text characteristics.
+Optical text detection in handwritten documents presents unique challenges compared to printed text, including inconsistent baselines, character connectivity variations, and diverse writing styles. This implementation adapts the DBNet architecture—originally designed for scene text detection—to specialize in handwritten content through targeted fine-tuning on custom datasets.
+
+The model builds upon the original DBNet framework, with modifications to training protocols and data augmentation strategies optimized for handwritten text characteristics. DBNet formulates text detection as a segmentation problem with a differentiable binarization module. This approach allows the network to learn adaptive thresholds during training, enabling precise text region segmentation without post-processing parameter tuning.
 
 ## Key Features
 
@@ -22,18 +24,6 @@ Dense text capability – Effectively separates adjacent handwritten lines and w
 
 Practical inference speed – Suitable for batch processing of scanned documents
 
-## Technical Approach
-
-DBNet formulates text detection as a segmentation problem with a differentiable binarization module. This approach allows the network to learn adaptive thresholds during training, enabling precise text region segmentation without post-processing parameter tuning.
-
-The fine-tuned version enhances performance on handwritten documents through:
-
-Specialized data augmentation mimicking handwriting variations
-
-Modified loss weighting for better handling of curved text regions
-
-Optimized backbone feature extraction for handwriting patterns
-
 ## Installation
 
 ### Repository Structure
@@ -41,13 +31,13 @@ Optimized backbone feature extraction for handwriting patterns
 ├── net/                      # Neural network architecture implementations
 ├── utils/                    # Utility functions and helpers
 ├── Dataset/                  # Data loading and processing
-│   ├── images/              # Training and validation images
-│   └── labels/              # Corresponding annotation files
+│   ├── images/               # Training and validation images
+│   └── labels/               # Corresponding annotation files
 ├── weights/                  # Model checkpoints
-├── CV_DBNet.ipynb           # Complete training workflow notebook
-├── inference.py             # Single image inference script
-├── test.py                  # Model evaluation on test sets
-└── requirements.txt         # Python dependencies
+├── CV_DBNet.ipynb            # Complete training workflow notebook
+├── inference.py              # Single image inference script
+├── test.py                   # Model evaluation on test sets
+└── requirements.txt          # Python dependencies
 ```
 
 ### Prerequisites
