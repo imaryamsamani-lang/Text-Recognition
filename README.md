@@ -74,7 +74,7 @@ pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 --extra-index-url http
 ## Data Preparation
 
 ### Annotation Format
-The model expects polygon-level annotations for text regions. Each image should have a corresponding JSON file with the following structure:
+The model expects polygon-level annotations for text regions. Each image should have a corresponding .txt file with the following structure:
 
 ```txt
 x1,y1,x2,y2,x3,y3,x4,y4, transcription
@@ -91,7 +91,7 @@ x1,y1,x2,y2,x3,y3,x4,y4, transcription
 Dataset/
 ├── train/
 │   ├── images/     # Training images (.jpg, .png)
-│   └── labels/     # Corresponding JSON annotations
+│   └── labels/     # Corresponding txt annotations
 ├── val/
 │   ├── images/     # Validation images
 │   └── labels/     # Validation annotations
