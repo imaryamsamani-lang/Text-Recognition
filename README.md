@@ -1,4 +1,4 @@
-## Handwritten Text Detection with DBNet
+# Handwritten Text Detection with DBNet
 
 A fine-tuned implementation of DBNet (Differentiable Binarization Network) optimized for detecting handwritten text in scanned documents, notes, and forms. This model addresses challenges specific to handwriting including curvature, irregular layouts, and varied writing styles.
 
