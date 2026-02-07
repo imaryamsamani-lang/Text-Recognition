@@ -28,16 +28,28 @@ Practical inference speed – Suitable for batch processing of scanned documents
 
 ### Repository Structure
 ```bash
-├── net/                      # Neural network architecture implementations
-├── utils/                    # Utility functions and helpers
-├── Dataset/                  # Data loading and processing
-│   ├── images/               # Training and validation images
-│   └── labels/               # Corresponding annotation files
-├── weights/                  # Model checkpoints
-├── CV_DBNet.ipynb            # Complete training workflow notebook
-├── inference.py              # Single image inference script
-├── test.py                   # Model evaluation on test sets
-└── requirements.txt          # Python dependencies
+├── net/                       # DBNet neural network architectures
+├── utils/                     # Utility functions (data loading, losses, metrics)
+├── Dataset/
+│   ├── train/
+│   │   ├── images/            # Training images (.jpg, .png)
+│   │   └── labels/            # Training annotations (.txt, ICDAR format)
+│   ├── val/
+│   │   ├── images/            # Validation images
+│   │   └── labels/            # Validation annotations
+│   └── test/
+│       ├── images/            # Test images
+│       └── labels/            # Test annotations
+│
+│   ├── train.txt              # Training image list (filenames)
+│   ├── val.txt                # Validation image list
+│   └── test.txt               # Test image list
+│
+├── weights/                   # Saved model checkpoints (.pth)
+├── CV_DBNet.ipynb             # End-to-end training & evaluation notebook
+├── inference.py               # Single-image inference script
+├── test.py                    # Quantitative evaluation on test set
+└── requirements.txt           # Python dependencies
 ```
 
 ### Prerequisites
