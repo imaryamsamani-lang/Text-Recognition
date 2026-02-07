@@ -97,21 +97,6 @@ x1, y1, x2, y2, x3, y3, x4, y4, annotation
 130,179,487,171,483,125,128,121, ###
 ```
 
-### Dataset Organization
-
-```text
-Dataset/
-├── train/
-│   ├── images/     # Training images (.jpg, .png)
-│   └── labels/     # Corresponding txt annotations
-├── val/
-│   ├── images/     # Validation images
-│   └── labels/     # Validation annotations
-└── test/
-    ├── images/     # Test images
-    └── labels/     # Test annotations
-```
-
 ## Model Weights
 Download the pre-trained weights fine-tuned for handwritten text detection: [db_best.pt](https://drive.google.com/file/d/1GWDVhdM54axJXbb-Buommhr3FlpDecPL/view?usp=sharing)
 
