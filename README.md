@@ -76,13 +76,13 @@ pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 --extra-index-url http
 ### Annotation Format
 The model expects polygon-level annotations for text regions. Each image should have a corresponding JSON file with the following structure:
 
-```json
-{
-  "polygons": [
-    [[x1, y1], [x2, y2], [x3, y3], [x4, y4]],
-    [[x5, y5], [x6, y6], [x7, y7], [x8, y8]]
-  ]
-}
+```txt
+x1,y1,x2,y2,x3,y3,x4,y4, transcription
+
+# example
+627,69,629,14,113,24,109,76, ###
+121,132,451,125,453,61,119,69, ###
+130,179,487,171,483,125,128,121, ###
 ```
 
 ### Dataset Organization
