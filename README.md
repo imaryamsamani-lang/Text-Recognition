@@ -138,18 +138,6 @@ For custom fine-tuning, use the comprehensive training notebook:
 jupyter notebook CV_DBNet.ipynb
 ```
 
-Key training configurations:
-
-Backbone: ResNet-18 or ResNet-50
-
-Input size: Adjustable based on document resolution
-
-Optimizer: Adam with cosine annealing schedule
-
-Batch size: Configurable based on GPU memory
-
-Loss: Combined probability map and threshold map losses
-
 ## Performance
 The fine-tuned model achieves the following performance on handwritten text detection:
 
