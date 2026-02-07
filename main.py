@@ -18,7 +18,7 @@ from utils.dataset import Dataset
 
 warnings.filterwarnings("ignore")
 
-data_dir = 'Dataset/TotalText'
+data_dir = 'Dataset/'
 
 
 def lr(args):
@@ -159,10 +159,10 @@ def train(args):
 @torch.no_grad()
 def test(args, model=None):
     filenames = []
-    with open('Dataset/TotalText/test.txt') as f:
+    with open('Dataset/test.txt') as f:
         for filename in f.readlines():
             filename = filename.rstrip()
-            filenames.append('Dataset/TotalText/images/test/' + filename)
+            filenames.append('Dataset/test/images' + filename)
 
     print(filenames)
     
@@ -198,10 +198,10 @@ def test(args, model=None):
 @torch.no_grad()
 def demo(args, model=None):
     filenames = []
-    with open('../Dataset/TotalText/test.txt') as f:
+    with open('../Dataset/test.txt') as f:
         for filename in f.readlines():
             filename = filename.rstrip()
-            filenames.append('../Dataset/TotalText/images/test/' + filename)
+            filenames.append('../Dataset/test/images' + filename)
 
     if model is None:
         model = torch.load(f'./weights/last.pt')
